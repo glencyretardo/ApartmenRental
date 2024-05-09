@@ -5,48 +5,36 @@ require_once 'connection.php';
 $message = [];
 
 if (isset($_POST['submit'])) {
-    // After fetching user inputs
     $email = $_POST['email'];
     $password = $_POST['pass'];
 
-    // Debugging output for email and password
-    echo "Email: " . $email . "<br>";
-    echo "Password: " . $password . "<br>";
-
-    // Debugging output for SQL query
-    $sqlQuery = "SELECT * FROM admin_table WHERE email = ?";
-    echo "SQL Query: " . $sqlQuery . "<br>";
-
     // Prepare and execute the query to fetch user data based on email
-    $stmt = $conn->prepare($sqlQuery);
+    $stmt = $conn->prepare("SELECT * FROM admin_table WHERE email = ?");
     $stmt->bind_param("s", $email);
 
+   
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Rest of your code continues here...
-    
     if ($result->num_rows == 1) {
         // User found, fetch user data
         $row = $result->fetch_assoc();
 
         // Verify password
-        if ($password === $row['password']) {
+        if (password_verify($password, $row['password'])) {
             // Password matches, set session variables
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['admin_id'] = $row['admin_id'];
+            $_SESSION['username'] = $row['admin_name'];
 
+            $_SESSION['admin_id'] = $row['admin_id']; // Assuming the user ID is stored in the database
+            
             // Redirect to home page after successful login
             header('location: home.php');
             exit();
         } else {
-            // Debugging output for password verification
-            echo "Password Verification Failed!<br>";
-            echo "Stored Password: " . $row['password'] . "<br>";
-            echo "Provided Password: " . $password . "<br>";
-
             $message[] = 'Incorrect email or password!';
         }
+    } else {
+        $message[] = 'Incorrect email or password!';
     }
 
     // Close database connection
