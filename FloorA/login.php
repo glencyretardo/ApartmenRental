@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         $row = $result->fetch_assoc();
 
         // Verify password
-        if (password_verify($password, $row['password'])) {
+        if ($password === $row['password']) { 
             // Password matches, set session variables
             $_SESSION['username'] = $row['admin_name'];
 
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
     ?>
 
     <section class="form-container">
-        <form action="" method="post">
+        <form action="login.php" method="post">
             <h3>Login now</h3>
             <input type="email" name="email" class="box" placeholder="Enter your email" required
                 value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>">

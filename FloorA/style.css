@@ -54,15 +54,7 @@ body{
  }
 
 
-.container {
-    width: 20%;
-  /*  margin: 0 auto;*/
-  position: absolute;
-    top: 30%;
-   
-    left : 10%;
-    
-}
+
 
 .box {
     background: #f9f9f9;
@@ -92,20 +84,6 @@ body{
     border-radius: 5px;
 }
 
-.form-group input[type="submit"] {
-    background: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.form-group input[type="submit"]:hover {
-    background: #0056b3;
-}
-
-
 .message {
     position: sticky;
     top: 0;
@@ -133,4 +111,290 @@ body{
 
 .message i:hover {
     transform: rotate(90deg);
+}
+
+
+.add-rooms-container {
+    width: 30%;
+   /*  margin: 0 auto;*/
+    position: absolute;
+    top: 26%;
+   
+    left : 5%;
+
+    
+}
+.add-rooms-container select {
+    width: 100%; /* Make the dropdown width 100% of its container */
+    padding: 10px; /* Add padding to the dropdown for better spacing */
+    border: 1px solid #ccc; /* Add a border to the dropdown */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Style the options within the dropdown */
+.add-rooms-container select option {
+    padding: 10px; /* Add padding to the options for better spacing */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.add-rooms-container textarea {
+    width: 100%; /* Make the textarea width 100% of its container */
+    padding: 10px; /* Add padding to the textarea for better spacing */
+    border: 1px solid #ccc; /* Add a border to the textarea */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    font-size: 16px; /* Adjust font size as needed */
+    resize: none; /* Make the textarea non-resizable */
+}
+
+
+
+/* edit form*/
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 9999; /* Ensure the overlay is on top of everything */
+    display: none; /* Initially hidden */
+}
+
+.edit-room-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 10000; /* Ensure the edit form is on top of the overlay */
+    display: none; /* Initially hidden */
+}
+.edit-room-container select {
+    width: 100%; /* Make the dropdown width 100% of its container */
+    padding: 10px; /* Add padding to the dropdown for better spacing */
+    border: 1px solid #ccc; /* Add a border to the dropdown */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Style the options within the dropdown */
+.edit-room-container select option {
+    padding: 10px; /* Add padding to the options for better spacing */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.edit-room-container textarea {
+    width: 100%; /* Make the textarea width 100% of its container */
+    padding: 10px; /* Add padding to the textarea for better spacing */
+    border: 1px solid #ccc; /* Add a border to the textarea */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    font-size: 16px; /* Adjust font size as needed */
+    resize: none; /* Make the textarea non-resizable */
+}
+
+
+.add-tenant-container {
+    width: 30%;
+   /*  margin: 0 auto;*/
+    position: absolute;
+    top: 26%;
+    left : 5%; /* Initially hidden */
+}
+.add-tenant-container select {
+    width: 100%; /* Make the dropdown width 100% of its container */
+    padding: 10px; /* Add padding to the dropdown for better spacing */
+    border: 1px solid #ccc; /* Add a border to the dropdown */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Style the options within the dropdown */
+.add-tenant-container select option {
+    padding: 10px; /* Add padding to the options for better spacing */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+
+/* TABLEEEES*/
+
+.date-selector {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-floor-container {
+    width: 30%;
+    /*  margin: 0 auto;*/
+     position: absolute;
+     top: 27%;
+    
+     left : 5%;
+    
+}
+
+
+.floor-table {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 50%; /* Adjust width as needed */
+    margin-top: 20px; /* Add margin-top if needed */
+}
+
+.floor-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.floor-table table, .floor-table th, .floor-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.floor-table th {
+    background-color: #f2f2f2;
+}
+.floor-table h2{
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+}
+.button {
+    background-color:#cc9178e4;/* Default button background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.existing-rooms-container .room-table {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 60%; /* Adjust width as needed */
+    margin-top: 20px; /* Add margin-top if needed */
+}
+
+.existing-rooms-container .room-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.room-table th:nth-child(1),
+.room-table td:nth-child(1) {
+    width: 10%; /* Adjust the width of the first column */
+}
+
+.room-table th:nth-child(2),
+.room-table td:nth-child(2) {
+    width: 50%; /* Adjust the width of the second column */
+}
+
+.room-table th:nth-child(3),
+.room-table td:nth-child(3) {
+    width: 50%; /* Adjust the width of the third column (Actions) */
+}
+
+.room-table th,
+.room-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.room-table th {
+    background-color: #f2f2f2;
+}
+
+.room-table h2 {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+
+/*tenant*/
+
+
+.existing-tenant-container .tenant-table {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 60%; /* Adjust width as needed */
+    margin-top: 20px; /* Add margin-top if needed */
+}
+
+.existing-tenant-container .tenant-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tenant-table th:nth-child(1),
+.room-table td:nth-child(1) {
+    width: 10%; /* Adjust the width of the first column */
+}
+
+.tenant-table th:nth-child(2),
+.tenant-table td:nth-child(2) {
+    width: 50%; /* Adjust the width of the second column */
+}
+
+.tenant-table th:nth-child(3),
+.tenant-table td:nth-child(3) {
+    width: 50%; /* Adjust the width of the third column (Actions) */
+}
+
+.tenant-table th,
+.tenant-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.tenant-table th {
+    background-color: #f2f2f2;
+}
+
+.tenant-table h2 {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.button {
+    background-color: #cc9178e4; /* Default button background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #666;
+}
+
+.room-table button {
+    display: inline-block; /* Display buttons inline */
+    margin-right: 5px; /* Add a margin between buttons */
+}
+
+
+.add-tenant-group{
+     position :absolute;
+    top: 20%;
+    left: 10%;
+
 }

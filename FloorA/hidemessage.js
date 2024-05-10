@@ -1,8 +1,12 @@
-setTimeout(function() {
-    document.querySelector('.message').style.display = 'none';
-}, 1000);
+document.addEventListener("DOMContentLoaded", function() {
 
-// Add click event listener to close button
-document.querySelector('.message i').addEventListener('click', function() {
-    document.querySelector('.message').style.display = 'none';
+    setTimeout(function() {
+        document.querySelector('.message').style.display = 'none';
+    }, 2000);
+
+    // Add click event listener to close button
+    document.querySelector('.message i').addEventListener('click', function() {
+        document.querySelector('.message').style.display = 'none';
+    });
+
 });

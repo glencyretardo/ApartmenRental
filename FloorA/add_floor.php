@@ -69,29 +69,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php endif; ?>
 
 
-    <div class="container">
-        <div class="box">
-            <div class="form-header">
-                <h2>Add Floor</h2>
-            </div>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <div class="form-group">
-                    <label for="floor_number">Floor Number:</label>
-                    <input type="text" id="floor_number" name="floor_number" required>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Add Floor">
-                </div>
-            </form>
+<div class="add-floor-container">
+    <div class="box">
+        <div class="form-header">
+            <h2>Add Floor</h2>
         </div>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <div class="form-group">
+                <label for="floor_number">Floor Number:</label>
+                <input type="text" id="floor_number" name="floor_number" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Floor"  class="button">
+            </div>
+        </form>
     </div>
+</div>
 
-    <script>
-        // Clear form fields when the page is loaded
-        window.onload = function() {
-            document.getElementById("floor_number").value = "";
-        };
-    </script>
+<div class="existing-floors-container">
+    <section class="floor-table">
+        <div class="box">
+            <h2>Existing Floors</h2>
+            <table>
+                <tr>
+                    <th>Floor Number</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                // Fetch existing floors from the database
+                $fetch_query = "SELECT * FROM floors";
+                $result = $conn->query($fetch_query);
+
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['floor_number'] . "</td>";
+                        echo "<td><button class='button' onclick='deleteFloor(" . $row['floor_id'] . ")'>Delete</button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='2'>No floors found</td></tr>";
+                }
+                ?>
+            </table>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Clear form fields when the page is loaded
+    window.onload = function() {
+        document.getElementById("floor_number").value = "";
+    };
+
+    // Function to delete a floor
+    function deleteFloor(floorId) {
+        if (confirm("Are you sure you want to delete this floor?")) {
+            // Redirect to delete script with floorId parameter
+            window.location.href = "delete_floor.php?floor_id=" + floorId;
+        }
+    }
+</script>
 
 <script src="hidemessage.js"></script>
 

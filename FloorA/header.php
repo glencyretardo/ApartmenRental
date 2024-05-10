@@ -20,11 +20,11 @@
             </div>
         </div>
         <nav class="navbar">
-            <a href="admin_dashboard.php"> Dashboard</a>
-            <a href="admin_products.php"> Tenants</a>
+            <a href="home.php"> Dashboard</a>
+            <a href="addTenant.php"> Tenants</a>
             <a href="admin_orders.php"></a>
             <a href="add_floor.php">Floors</a>
-            <a href="admin_contacts.php">Rooms</a>
+            <a href="addRooms.php">Rooms</a>
         </nav>
         <div class="account-box" id="account-box">
            
