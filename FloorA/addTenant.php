@@ -30,6 +30,23 @@ $message = "";
 
     <?php include 'header.php'; ?>
 
+    <script>
+        function toggleAddTenantForm() {
+            var formContainer = document.getElementById('add-tenant-container');
+            var overlay = document.querySelector('.overlay');
+
+            if (formContainer.style.display === 'none') {
+                formContainer.style.display = 'block';
+                overlay.style.display = 'block'; // Show overlay
+                document.body.classList.add('blur'); // Add blur effect to the body
+            } else {
+                formContainer.style.display = 'none';
+                overlay.style.display = 'none'; // Hide overlay
+                document.body.classList.remove('blur'); // Remove blur effect from the body
+            }
+        }
+    </script>
+
     <!-- Display success or error message -->
     <?php if (!empty($message)) : ?>
         <div class="message">
@@ -38,58 +55,15 @@ $message = "";
     <?php endif; ?>
 
     <div class="add-tenant-group">
-        <input type="submit" value="Add Tenant" class="button">
-     </div>
-
-    <div class="add-tenant-container">
-        <div class="box">
-            <div class="form-header">
-                <h2>Tenant Information</h2>
-            </div>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <div class="form-group">
-                    <label for="first_name"> Name:</label>
-                    <input type="text" id="first_name" name="first_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="tenant-room">Room:</label>
-                    <select id="tenant-room" name="tenant-room" required>
-                        <option value="">Select Room</option>
-                        <?php
-                        // Fetch rooms from the database
-                        $fetch_query = "SELECT * FROM room";
-                        $result = $conn->query($fetch_query);
-
-                        if ($result && $result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<option value='" . $row['room_id'] . "'>" . $row['room_name'] . "</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No rooms found</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="contact-number">Contact Number:</label>
-                    <input type="text" id="contact-number" name="contact-number" required>
-                </div>
-                <div class="form-group">
-                    <div class="date-selector">
-                        <label for="move-in-date"> Move In date:</label>
-                        <input type="date" id="move-in-date" name="move-in-date">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="button">
-                </div>
-            </form>
-        </div>
+        <input type="button" value="Add Tenant" class="button" onclick="toggleAddTenantForm()">
     </div>
+
+    <div class="add-tenant-container" id="add-tenant-container" style="display: none;">
+        <?php include 'add_tenant_form.php'; ?>
+    </div>
+
+   <!-- <div class="overlay"></div> -->
+
 
     <div class="existing-tenant-container">
         <section class="tenant-table">
@@ -97,41 +71,50 @@ $message = "";
                 <h2>Existing Rooms</h2>
                 <table>
                     <tr>
-                        <th>Room_ID</th>
-                        <th>Room Details</th>
+                        <th>Tenant_ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Move-in Date</th>
+                        <th>Room</th>
                         <th>Actions</th>
                     </tr>
                     <?php
-                    // Fetch existing floors from the database
                     // Fetch existing rooms from the database with associated floor details
-                    $fetch_query = "SELECT rooms.room_id, rooms.room_name, rooms.floor_id, rooms.room_price_per_month, rooms.description, floors.floor_number 
-FROM rooms 
-INNER JOIN floors ON rooms.floor_id = floors.floor_id";
+                    $fetch_query = "SELECT tenants.tenant_id, tenants.name, tenants.email, tenants.contact_number, tenants.move_in_date, rooms.room_id, rooms.room_name 
+                                    FROM tenants 
+                                    INNER JOIN rooms ON tenants.room_id = rooms.room_id";
                     $result = $conn->query($fetch_query);
 
                     if ($result && $result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>" . $row['room_id'] . "</td>"; // Assuming 'room_id' is the unique identifier for the room
-                            echo "<td>Room Name: " . $row['room_name'] . "<br>";
-                            echo "Floor: " . $row['floor_number'] . "<br>";
-                            echo "Monthly Rate: ₱" . $row['room_price_per_month'] . "<br>";
-                            echo "Description: " . $row['description'] . "</td>";
+                            echo "<td>" . $row['tenant_id'] . "</td>";
+                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>" . $row['email'] . "</td>";
+                            echo "<td>" . $row['contact_number'] . "</td>";
+                            echo "<td>" . $row['move_in_date'] . "</td>";
+                            echo "<td>" . $row['room_name'] . "</td>";
                             echo "<td>
-<button class='button' onclick='editRoom(" . $row['room_id'] . ")'>Edit</button>
-<button class='button' onclick='viewRoom(" . $row['room_id'] . ")'>View</button>
-<button class='button' onclick='deleteRoom(" . $row['room_id'] . ")'>Delete</button>
-</td>";
+                                    <button class='button' onclick='editRoom(" . $row['room_id'] . ")'>Edit</button>
+                                    <button class='button' onclick='viewRoom(" . $row['room_id'] . ")'>View</button>
+                                    <button class='button' onclick='deleteRoom(" . $row['room_id'] . ")'>Delete</button>
+                                  </td>";
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='2'>No rooms found</td></tr>";
+                        echo "<tr><td colspan='7'>No tenants found</td></tr>";
                     }
                     ?>
                 </table>
             </div>
         </section>
     </div>
+
+    <script>
+        
+    </script>
+
 </body>
 
 </html>

@@ -200,47 +200,11 @@ body{
 }
 
 
-.add-tenant-container {
-    width: 30%;
-   /*  margin: 0 auto;*/
-    position: absolute;
-    top: 26%;
-    left : 5%; /* Initially hidden */
-}
-.add-tenant-container select {
-    width: 100%; /* Make the dropdown width 100% of its container */
-    padding: 10px; /* Add padding to the dropdown for better spacing */
-    border: 1px solid #ccc; /* Add a border to the dropdown */
-    border-radius: 5px; /* Add border radius for rounded corners */
-    box-sizing: border-box; /* Ensure padding and border are included in width */
-    font-size: 16px; /* Adjust font size as needed */
-}
 
-/* Style the options within the dropdown */
-.add-tenant-container select option {
-    padding: 10px; /* Add padding to the options for better spacing */
-    font-size: 16px; /* Adjust font size as needed */
-}
 
 
 /* TABLEEEES*/
 
-.date-selector {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.add-floor-container {
-    width: 30%;
-    /*  margin: 0 auto;*/
-     position: absolute;
-     top: 27%;
-    
-     left : 5%;
-    
-}
 
 
 .floor-table {
@@ -328,51 +292,6 @@ body{
 /*tenant*/
 
 
-.existing-tenant-container .tenant-table {
-    position: absolute;
-    top: 20%;
-    right: 0;
-    width: 60%; /* Adjust width as needed */
-    margin-top: 20px; /* Add margin-top if needed */
-}
-
-.existing-tenant-container .tenant-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tenant-table th:nth-child(1),
-.room-table td:nth-child(1) {
-    width: 10%; /* Adjust the width of the first column */
-}
-
-.tenant-table th:nth-child(2),
-.tenant-table td:nth-child(2) {
-    width: 50%; /* Adjust the width of the second column */
-}
-
-.tenant-table th:nth-child(3),
-.tenant-table td:nth-child(3) {
-    width: 50%; /* Adjust the width of the third column (Actions) */
-}
-
-.tenant-table th,
-.tenant-table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-
-.tenant-table th {
-    background-color: #f2f2f2;
-}
-
-.tenant-table h2 {
-    text-align: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-
 .button {
     background-color: #cc9178e4; /* Default button background color */
     color: white;
@@ -391,10 +310,170 @@ body{
     margin-right: 5px; /* Add a margin between buttons */
 }
 
+.add-floor-container {
+    width: 30%;
+   /*  margin: 0 auto;*/
+    position: absolute;
+    top: 27%;
+   
+    left : 5%;
+   
+}
+
+
+
+
 
 .add-tenant-group{
      position :absolute;
     top: 20%;
     left: 10%;
 
+}
+
+
+
+.date-selector {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Adjust the positioning and size of the form container */
+/* Adjust the positioning and size of the form container */
+.form-container {
+    width: 50%;
+    max-width: 500px; /* Set a maximum width for the form container */
+    position: absolute; /* Position the form container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the form container */
+    z-index: 999; /* Ensure the form appears above other elements */
+}
+
+/* Adjust the styling of the form */
+.form-container .box {
+    width: 100%;
+    
+    
+
+}
+
+/* Adjust the styling of form fields if needed */
+.form-container input[type="text"],
+.form-container select,
+.form-container input[type="date"],
+.form-container .button {
+    width: calc(100% - 20px); /* Make form fields take up full width with some padding */
+    margin-bottom: 10px; /* Add space between form fields */
+
+}
+.form-container .button {
+    width: 80px; /* Set the width of the button */
+    height: 30px; /* Set the height of the button */
+    position: absolute; /* Position the button absolutely */
+    bottom: 0; /* Align the button to the top */
+    right: 10%; /* Align the button to the right */
+    margin-bottom: 10px; /* Add space below the button */
+    font-size: 10px; /* Adjust the font size of the button text */
+}
+
+
+
+.form-container .cancel-button {
+    width: 80px; /* Set the width of the button */
+    height: 30px; /* Set the height of the button */
+    position: absolute; /* Position the button absolutely */
+    bottom: 0; /* Align the button to the top */
+    left: 10%; /* Align the button to the right */
+    margin-bottom: 10px; /* Add space below the button */
+    font-size: 10px; /* Adjust the font size of the button text */
+
+    background-color: #cc9178e4; /* Default button background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.form-container .cancel-button:hover {
+    background-color: #666;
+}
+
+
+
+
+
+.existing-tenant-container .tenant-table {
+    position: absolute;
+    top: 20%;
+    
+    left: 50; /* Set both left and right to center the table horizontally */
+    margin: 0 auto; /* Center the table horizontally */
+    width: 60%; /* Adjust width as needed */
+    transform: translateX(-50%);
+    margin-top: 20px; /* Add margin-top if needed */
+}
+
+.existing-tenant-container .tenant-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tenant-table th:nth-child(1),
+.room-table td:nth-child(1) {
+    width: 5%; /* Adjust the width of the first column */
+}
+
+.tenant-table th:nth-child(2),
+.tenant-table td:nth-child(2) {
+    width: 20%; /* Adjust the width of the second column */
+}
+
+.tenant-table th:nth-child(3),
+.tenant-table td:nth-child(3) {
+    width: 10%; /* Adjust the width of the third column (Actions) */
+}
+
+.tenant-table th:nth-child(4),
+.tenant-table td:nth-child(4) {
+    width: 20%; /* Adjust the width of the third column (Actions) */
+}
+
+.tenant-table th:nth-child(5),
+.tenant-table td:nth-child(5) {
+    width: 10%; /* Adjust the width of the third column (Actions) */
+}
+
+.tenant-table th:nth-child(6),
+.tenant-table td:nth-child(6) {
+    width: 10%; /* Adjust the width of the third column (Actions) */
+}
+
+
+.tenant-table th:nth-child(7),
+.tenant-table td:nth-child(7) {
+    width: 30%; /* Adjust the width of the third column (Actions) */
+}
+
+
+.tenant-table th,
+.tenant-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.tenant-table th {
+    background-color: #f2f2f2;
+}
+
+.tenant-table h2 {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
