@@ -409,18 +409,20 @@ body{
 
 .existing-tenant-container .tenant-table {
     position: absolute;
-    top: 20%;
+    top: 30%;
     
-    left: 50; /* Set both left and right to center the table horizontally */
-    margin: 0 auto; /* Center the table horizontally */
-    width: 60%; /* Adjust width as needed */
-    transform: translateX(-50%);
+     /* Set both left and right to center the table horizontally */
+   /* Center the table horizontally */
+    width: 100%; /* Adjust width as needed */
+   
     margin-top: 20px; /* Add margin-top if needed */
 }
 
 .existing-tenant-container .tenant-table table {
     width: 100%;
     border-collapse: collapse;
+    top: 10%;
+
 }
 
 .tenant-table th:nth-child(1),
@@ -435,12 +437,12 @@ body{
 
 .tenant-table th:nth-child(3),
 .tenant-table td:nth-child(3) {
-    width: 10%; /* Adjust the width of the third column (Actions) */
+    width: 20%; /* Adjust the width of the third column (Actions) */
 }
 
 .tenant-table th:nth-child(4),
 .tenant-table td:nth-child(4) {
-    width: 20%; /* Adjust the width of the third column (Actions) */
+    width: 10%; /* Adjust the width of the third column (Actions) */
 }
 
 .tenant-table th:nth-child(5),
@@ -473,7 +475,9 @@ body{
 }
 
 .tenant-table h2 {
+    color:#3d4522e7;
+    font-size: 30px;
     text-align: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 0%;
+    padding-bottom: 3%;
 }
